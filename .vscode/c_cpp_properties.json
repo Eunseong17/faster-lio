@@ -1,0 +1,37 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/jairlab/catkin_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/jairlab/catkin_ws/src/cam_lidar_calibration/include/**",
+        "/home/jairlab/catkin_ws/src/VINS-Fusion/camera_models/include/**",
+        "/home/jairlab/catkin_ws/src/ddynamic_reconfigure/include/**",
+        "/home/jairlab/catkin_ws/src/image_pipeline/depth_image_proc/include/**",
+        "/home/jairlab/catkin_ws/src/DynamixelSDK/ros/dynamixel_sdk/include/**",
+        "/home/jairlab/catkin_ws/src/ex_urdf/include/**",
+        "/home/jairlab/catkin_ws/src/faster-lio/include/**",
+        "/home/jairlab/catkin_ws/src/image_pipeline/image_proc/include/**",
+        "/home/jairlab/catkin_ws/src/LeGO-LOAM/LeGO-LOAM/include/**",
+        "/home/jairlab/catkin_ws/src/orb_slam3_ros/include/**",
+        "/home/jairlab/catkin_ws/src/realsense-ros/realsense2_camera/include/**",
+        "/home/jairlab/catkin_ws/src/image_pipeline/stereo_image_proc/include/**",
+        "/home/jairlab/catkin_ws/src/turtlebot3_simulations/turtlebot3_fake/include/**",
+        "/home/jairlab/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/include/**",
+        "/home/jairlab/catkin_ws/src/turtlebot3/turtlebot3_slam/include/**",
+        "/home/jairlab/catkin_ws/src/zed-ros-wrapper/zed-ros-interfaces/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

@@ -1,0 +1,47 @@
+common:
+    lid_topic:  "/ouster/points"
+    imu_topic:  "/xsens/imu/data"
+    time_sync_en: false         # ONLY turn on when external time synchronization is really not possible
+    
+preprocess:
+    lidar_type: 3                # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR, 
+    scan_line: 32
+    blind: 3    # 라이다 센서의 블라인드 존 설정
+    time_scale: 1e-3 # 다른 데이터셋의 시간 단위를 호환하기 위한 스케일링 파라미터
+
+mapping:
+    acc_cov: 0.1 # 가속도계의 공분산 값
+    gyr_cov: 0.1 # 자이로스코프의 공분산 값
+    b_acc_cov: 0.0001 # 가속도계의 bias 공분산 값
+    b_gyr_cov: 0.0001 # 자이로스코프의 bias 공분산 값
+    fov_degree:    180  # 필드 오브 뷰(FOV)의 각도 설정
+    det_range:     150.0  # 탐지 범위 설정
+    extrinsic_est_en:  true      # true: IMU-LiDAR 외부 파라미터를 온라인으로 추정할지 여부
+    extrinsic_T: [ -0.04975, 0.0, -0.5519 ]
+    extrinsic_R: [1, 0, 0,
+                  0, 1, 0,
+                  0, 0, 1]
+
+publish:
+    path_publish_en:  false     # 경로를 게시할지 여부
+    scan_publish_en:  true       # 포인트 클라우드 출력을 닫을지 여부
+    scan_effect_pub_en: true    # true: publish the pointscloud of effect point
+    dense_publish_en: false       # false: low down the points number in a global-frame point clouds scan.
+    scan_bodyframe_pub_en: true  # true: output the point cloud scans in IMU-body-frame
+
+path_save_en: true
+
+pcd_save:
+    pcd_save_en: true
+    interval: -1                 # how many LiDAR frames saved in each pcd file; 각 pcd 파일에 저장되는 라이다 프레임 수 (-1: 모든 프레임이 한 개의 pcd 파일에 저장되며, 프레임이 너무 많을 경우 메모리 충돌 가능성 있음)
+                                 # -1 : all frames will be saved in ONE pcd file, may lead to memory crash when having too much frames.
+feature_extract_enable: false # 피처 추출을 활성화할지 여부
+point_filter_num: 3 # 점 필터의 수
+max_iteration: 3  # 최대 반복 횟수
+filter_size_surf: 0.5  # 표면 필터 크기
+filter_size_map: 0.5             # 현재는 사용되지 않으며, 코드에서는 0으로 설정되어 있습니다. 이것은 다운샘플링된 스캔의 모든 점이 맵에 추가됨을 의미합니다
+cube_side_length: 1000 # 큐브의 한 변의 길이
+
+ivox_grid_resolution: 0.5        # default=0.2
+ivox_nearby_type: 18             # 6, 18, 26
+esti_plane_threshold: 0.1        # default=0.1

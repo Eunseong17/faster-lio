@@ -31,3 +31,8 @@ endif()
 
 add_subdirectory(src)
 add_subdirectory(app)
+
+
+add_executable(savePose src/savePose.cpp)
+add_dependencies(savePose ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(savePose ${catkin_LIBRARIES})
