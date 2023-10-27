@@ -78,6 +78,7 @@ bool LaserMapping::LoadParams(ros::NodeHandle &nh) {
     nh.param<double>("mapping/b_gyr_cov", b_gyr_cov, 0.0001);
     nh.param<double>("mapping/b_acc_cov", b_acc_cov, 0.0001);
     nh.param<double>("preprocess/blind", preprocess_->Blind(), 0.01);
+    nh.param<double>("mapping/det_range", preprocess_->MaxRange(), 0.01);
     nh.param<float>("preprocess/time_scale", preprocess_->TimeScale(), 1e-3);
     nh.param<int>("preprocess/lidar_type", lidar_type, 1);
     nh.param<int>("preprocess/scan_line", preprocess_->NumScans(), 16);

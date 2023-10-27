@@ -5,10 +5,11 @@
 
 namespace faster_lio {
 
-void PointCloudPreprocess::Set(LidarType lid_type, double bld, int pfilt_num) {
+void PointCloudPreprocess::Set(LidarType lid_type, double bld, int pfilt_num, double max_range) {
     lidar_type_ = lid_type;
     blind_ = bld;
     point_filter_num_ = pfilt_num;
+    max_range_ = max_range;
 }
 
 void PointCloudPreprocess::Process(const livox_ros_driver::CustomMsg::ConstPtr &msg, PointCloudType::Ptr &pcl_out) {
@@ -92,7 +93,8 @@ void PointCloudPreprocess::Oust64Handler(const sensor_msgs::PointCloud2::ConstPt
         double range = pl_orig.points[i].x * pl_orig.points[i].x + pl_orig.points[i].y * pl_orig.points[i].y +
                        pl_orig.points[i].z * pl_orig.points[i].z;
 
-        if (range < (blind_ * blind_)) continue;
+        if (range < (blind_ * blind_) || range > (max_range_ * max_range_)) continue;
+        // std::cout << max_range_;
 
         Eigen::Vector3d pt_vec;
         PointType added_pt;

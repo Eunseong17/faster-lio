@@ -71,7 +71,7 @@ class PointCloudPreprocess {
     /// processors
     void Process(const livox_ros_driver::CustomMsg::ConstPtr &msg, PointCloudType::Ptr &pcl_out);
     void Process(const sensor_msgs::PointCloud2::ConstPtr &msg, PointCloudType::Ptr &pcl_out);
-    void Set(LidarType lid_type, double bld, int pfilt_num);
+    void Set(LidarType lid_type, double bld, int pfilt_num, double range);
 
     // accessors
     double &Blind() { return blind_; }
@@ -81,6 +81,7 @@ class PointCloudPreprocess {
     float &TimeScale() { return time_scale_; }
     LidarType GetLidarType() const { return lidar_type_; }
     void SetLidarType(LidarType lt) { lidar_type_ = lt; }
+    double &MaxRange() { return max_range_; }
 
    private:
     void AviaHandler(const livox_ros_driver::CustomMsg::ConstPtr &msg);
@@ -94,6 +95,7 @@ class PointCloudPreprocess {
     int point_filter_num_ = 1;
     int num_scans_ = 6;
     double blind_ = 0.01;
+    double max_range_ = 60;
     float time_scale_ = 1e-3;
     bool given_offset_time_ = false;
 };
